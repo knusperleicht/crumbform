@@ -1,0 +1,57 @@
+{
+    "name": "knusperleicht/crumbform",
+    "description": "Test",
+    "keywords": [
+        "knusperleicht",
+        "email-contact-form"
+    ],
+    "homepage": "https://github.com/knusperleicht/crumbform",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Mathias",
+            "email": "mathias.michalko@knusperleicht.at",
+            "role": "Developer"
+        },
+        {
+            "name": "Christian",
+            "email": "christian.behon@knusperleicht.at",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.3",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "fideloper/proxy": "^4.2",
+        "fruitcake/laravel-cors": "^2.0",
+        "guzzlehttp/guzzle": "^7.0.1",
+        "laravel/framework": "^8.12",
+        "laravel/tinker": "^2.5",
+        "mews/captcha": "^3.2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Knusperleicht\\CrumbForm\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Knusperleicht\\CrumbForm\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Knusperleicht\\CrumbForm\\CrumbFormServiceProvider"
+            ]
+        },
+        "branch-alias": {
+            "dev-master": "0.0.1-dev"
+        }
+    }
+}
