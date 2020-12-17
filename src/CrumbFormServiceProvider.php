@@ -10,11 +10,11 @@ use Knusperleicht\CrumbForm\Mail\Control\MailService;
 use Knusperleicht\CrumbForm\Mail\Control\MailServiceInterface;
 use Mews\Captcha\CaptchaServiceProvider;
 
-define('CF_NAMESPACE', 'Knusperleicht');
-define('CF_API_PATH', __DIR__ . './../routes/api.php');
-define('CF_MIGRATION_PATH', __DIR__ . '/../database/migrations');
-define('CF_VIEW_PATH', __DIR__ . '/../views');
-define('CF_CONFIG_PATH', __DIR__ . '/../config/crumbform.php');
+const NAME_SPACE = 'Knusperleicht';
+const API_PATH = __DIR__ . './../routes/api.php';
+const MIGRATION_PATH = __DIR__ . '/../database/migrations';
+const VIEW_PATH = __DIR__ . '/../views';
+const CONFIG_PATH = __DIR__ . '/../config/crumbform.php';
 
 class CrumbFormServiceProvider extends ServiceProvider
 {
@@ -31,9 +31,9 @@ class CrumbFormServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishConfig();
-        $this->loadRoutesFrom(CF_API_PATH);
-        $this->loadMigrationsFrom(CF_MIGRATION_PATH);
-        $this->loadViewsFrom(CF_VIEW_PATH, CF_NAMESPACE);
+        $this->loadRoutesFrom(API_PATH);
+        $this->loadMigrationsFrom(MIGRATION_PATH);
+        $this->loadViewsFrom(VIEW_PATH, NAME_SPACE);
 
         /*DB::listen(function ($query){
             $query->sql;
@@ -46,12 +46,12 @@ class CrumbFormServiceProvider extends ServiceProvider
     {
         $this->publishes(
             [
-                CF_VIEW_PATH => base_path('resources/views/vendor/crumbform')
+                VIEW_PATH => base_path('resources/views/vendor/crumbform')
             ], 'views');
 
         $this->publishes(
             [
-                CF_CONFIG_PATH => config_path('crumbform.php'),
+                CONFIG_PATH => config_path('crumbform.php'),
             ], 'config');
     }
 }
