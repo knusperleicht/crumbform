@@ -1,9 +1,9 @@
-# Laravel Email Contact Api
+# Laravel Email Form Api
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/knusperleicht/email-contact-form.svg?style=flat-square)](https://packagist.org/packages/knusperleicht/email-contact-form)
-[![Build Status](https://img.shields.io/travis/knusperleicht/email-contact-form/master.svg?style=flat-square)](https://travis-ci.org/knusperleicht/email-contact-form)
-[![Quality Score](https://img.shields.io/scrutinizer/g/knusperleicht/email-contact-form.svg?style=flat-square)](https://scrutinizer-ci.com/g/knusperleicht/email-contact-form)
-[![Total Downloads](https://img.shields.io/packagist/dt/knusperleicht/email-contact-form.svg?style=flat-square)](https://packagist.org/packages/knusperleicht/email-contact-form)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/knusperleicht/crumbform.svg?style=flat-square)](https://packagist.org/packages/knusperleicht/email-contact-form)
+[![Build Status](https://img.shields.io/travis/knusperleicht/crumbform/master.svg?style=flat-square)](https://travis-ci.org/knusperleicht/email-contact-form)
+[![Quality Score](https://img.shields.io/scrutinizer/g/knusperleicht/crumbform.svg?style=flat-square)](https://scrutinizer-ci.com/g/knusperleicht/email-contact-form)
+[![Total Downloads](https://img.shields.io/packagist/dt/knusperleicht/crumbform.svg?style=flat-square)](https://packagist.org/packages/knusperleicht/email-contact-form)
 
 CrumbForm is a laravel backend plugin that lets you handle your forms for JAMStack or API-driven static websites. It
 provides a fluent api interface for adding a form within a few minutes.
@@ -13,7 +13,10 @@ It offers the following features:
 - Multiple contact forms
 - Validation rules
 - Anti-bot image captcha system (optional)
-- Log emails in database (optional)
+- Logging: database or file (optional)
+
+## Missing features
+- Captcha
 
 ## Installation
 
@@ -28,6 +31,7 @@ composer require knusperleicht/crumbform
 ``` bash
 php artisan vendor:publish --provider="Knusperleicht\CrumbForm\CrumbFormServiceProvider" --tag="config"
 php artisan vendor:publish --provider="Knusperleicht\CrumbForm\CrumbFormServiceProvider" --tag="views"
+php artisan vendor:publish --provider="Knusperleicht\CrumbForm\CrumbFormServiceProvider" --tag="migrations"
 ```
 
 ## Example:
@@ -65,23 +69,41 @@ CrumbForm config:
 
 ## All config parameters
 
-``` php
-    'contact-form' => [
-        'view' => 'vendor.crumbform.emails.default',
-        'subject' => 'This a subject',
-        'from' => ['support@crumbform.at'],
-        'cc' => [], // CC receipients (Default: [])
-        'bcc' => [], // BCC receipients (Default: [])
-        'copy' => false, // Send copy to from (Default: false)
-        'rules' => [
-            'field1' => 'required|string|max:10',
-            'field2' => 'required|email',
-        ]
-    ]
-```
+| Property  |      Type     | Description|
+|-----------|:-------------:|--------:|
+| view      | string *      | View which should be used for emails | 
+| subject   | string *      |  Email subject |
+| from      | string *      |  Who send the mail |
+| cc        | array         |  Carbon copy. With all recipients |
+| bcc       | array         |  Blind carbon copy. Without recipients |
+| copy      | array         |  field_send_copy: Can be name of the checkbox in the form or boolean (true/false |
+|           |               |  field_email: Email field in the form |
+| logging   | string        |  Can be db or file  |
+| rules     | array *        | Validation rules for your input form ([Validation Rules](https://laravel.com/docs/8.x/validation#available-validation-rules)) |
+
+* Required properties in the array
+
+## Example with all parameters
 
 ``` php
-// Usage description here
+
+return [
+
+    'formname' => [
+        'view' => 'vendor.crumbform.emails.test',
+        'subject' => 'This a test',
+        'from' => ['support@knusperleicht.at'],
+        'bcc' => [''],
+        'cc' => [''],
+        'copy' => ['field_send_copy' => 'form_copy', 'field_email' => 'form_email'],
+        'logging' => 'db',
+        'rules' => [
+            'name' => ['required', 'string', 'max:10'],
+            'email' => 'required|email',
+            'copy' => ''
+        ]
+    ]
+];
 ```
 
 ### Testing
@@ -106,7 +128,8 @@ tracker.
 ## Credits
 
 - [Mathias](https://github.com/knusperleicht)
-- [All Contributors](../../contributors)
+- [Christian](https://github.com/knusperleicht)
+- [Sebastian](https://github.com/knusperleicht)
 
 ## License
 
