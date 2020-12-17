@@ -1,6 +1,6 @@
 {
     "name": "knusperleicht/crumbform",
-    "description": "Test",
+    "description": "CrumbForm is a laravel backend plugin that lets you handle your forms for JAMStack or API-driven static websites. It\nprovides a fluent api interface for adding a form within a few minutes.",
     "keywords": [
         "knusperleicht",
         "crumbform",
