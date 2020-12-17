@@ -3,7 +3,9 @@
     "description": "Test",
     "keywords": [
         "knusperleicht",
-        "email-contact-form"
+        "crumbform",
+        "headless",
+        "jacmstack"
     ],
     "homepage": "https://github.com/knusperleicht/crumbform",
     "license": "MIT",
@@ -17,6 +19,11 @@
         {
             "name": "Christian",
             "email": "christian.behon@knusperleicht.at",
+            "role": "Developer"
+        },
+        {
+            "name": "Sebastian",
+            "email": "sebastian.paral@knusperleicht.at",
             "role": "Developer"
         }
     ],

@@ -7,6 +7,7 @@ return [
         'from' => [],
         'cc' => [],
         'bcc' => [],
+        'redirect' => '',
         'copy' => false,
         'logging' => 'db',
         'rules' => []

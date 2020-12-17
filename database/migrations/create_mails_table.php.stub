@@ -14,9 +14,10 @@ class CreateMailsTable extends Migration
     public function up(): void
     {
         Schema::create('mails', function (Blueprint $table) {
-            $table->id()->autoIncrement()->primary();
+            $table->id()->autoIncrement();
             $table->string("hash_id");
             $table->string("body")->nullable(false);
+            $table->string("status")->default('PENDING');
             $table->timestamps();
         });
     }

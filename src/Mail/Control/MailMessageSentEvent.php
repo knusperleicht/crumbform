@@ -18,11 +18,11 @@ class MailMessageSentEvent
     public function handle(MessageSent $messageSent): void
     {
         $logging = config($messageSent->data['configName'] . 'logging');
+        $id = hash('sha256', $messageSent->message->getBody());
         if ($logging === 'db') {
-            $id = hash('sha256', $messageSent->message->getBody());
             $this->repository->update($id);
         } else if ($logging === 'file') {
-            Log::debug('MailMessageSentEvent');
+            Log::info('Mail message sent: ', ['id' => $id]);
         }
     }
 }

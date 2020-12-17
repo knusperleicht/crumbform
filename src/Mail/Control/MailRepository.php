@@ -2,28 +2,22 @@
 
 namespace Knusperleicht\CrumbForm\Mail\Control;
 
-use Illuminate\Support\Facades\Log;
+use Knusperleicht\CrumbForm\Mail\Entity\MailModel;
 
 
 class MailRepository implements MailRepositoryInterface
 {
-    public function store(string $id, string $body)
+    public function store(string $id, string $body): void
     {
-
-        Log::debug('ID: ' . $id . ' Body: ' . $body);
-//        $mails = new MailModel();
-//        $mails->content = $content;
-//        $mails->header = $header;
-//        $mails->ip = $ip;
-//        $mails->file = $file;
-//        $mails->save();
-//        return $mails;
+        MailModel::create([
+            'hash_id' => $id,
+            'body' => htmlspecialchars($body)
+        ]);
     }
 
 
-    public function update(string $id)
+    public function update(string $id): void
     {
-        Log::debug('ID: ' . $id);
-        // TODO: Implement update() method.
+        MailModel::where('hash_id', $id)->update(['status' => 'SENT']);
     }
 }

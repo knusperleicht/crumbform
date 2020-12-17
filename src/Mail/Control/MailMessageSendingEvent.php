@@ -17,11 +17,12 @@ class MailMessageSendingEvent
     public function handle(MessageSending $messageSending): void
     {
         $logging = config($messageSending->data['configName'] . 'logging');
+        $id = hash('sha256', $messageSending->message->getBody());
+        $body = $messageSending->message->getBody();
         if ($logging === 'db') {
-            $id = hash('sha256', $messageSending->message->getBody());
-            $this->repository->store($id, $messageSending->message->getBody());
+            $this->repository->store($id, $body);
         } else if ($logging === 'file') {
-            Log::debug('MailMessageSendingEvent');
+            Log::info('Mail message sending: ', ['id' => $id, 'body' => htmlspecialchars($body)]);
         }
     }
 }
