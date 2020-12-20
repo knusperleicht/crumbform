@@ -29,14 +29,11 @@
     ],
     "require": {
         "php": "^7.3",
-        "ext-json": "*",
-        "ext-pdo": "*",
-        "fideloper/proxy": "^4.2",
-        "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
-        "laravel/framework": "^8.12",
-        "laravel/tinker": "^2.5",
-        "mews/captcha": "^3.2.3"
+        "illuminate/support": "8.1.*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "6.7.0",
+        "phpunit/phpunit": "9.5.0"
     },
     "autoload": {
         "psr-4": {

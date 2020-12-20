@@ -48,6 +48,6 @@ class MailController extends Controller
         if (!empty($redirectTo)) {
             return redirect($redirectTo);
         }
-        return response('Success');
+        return new ApiResponse('Success');
     }
 }
