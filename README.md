@@ -1,10 +1,10 @@
 # Laravel Email Form Api
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/knusperleicht/crumbform.svg?style=flat-square)](https://packagist.org/packages/knusperleicht/crumbform)
-[![Build Status](https://img.shields.io/travis/knusperleicht/crumbform/master.svg?style=flat-square)](https://travis-ci.org/knusperleicht/crumbform)
 [![Total Downloads](https://img.shields.io/packagist/dt/knusperleicht/crumbform.svg?style=flat-square)](https://packagist.org/packages/knusperleicht/crumbform)
 [![License](https://img.shields.io/packagist/l/knusperleicht/crumbform)](https://packagist.org/packages/knusperleicht/crumbform)
 ![Tests](https://github.com/knusperleicht/crumbform/workflows/Tests/badge.svg)
+![Packagist Version](https://img.shields.io/packagist/v/knusperleicht/crumbform)
+
 
 CrumbForm is a laravel backend plugin that lets you handle your forms for JAMStack or API-driven static websites. It
 provides a fluent api interface for adding a form within a few minutes.
