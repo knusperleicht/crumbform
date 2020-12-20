@@ -8,12 +8,6 @@ use Illuminate\Support\Facades\Mail;
 
 class MailService implements MailServiceInterface
 {
-
-    public function __construct()
-    {
-
-    }
-
     public function send(string $configName, array $input): void
     {
         $cc = array_merge($this->sendCopyTo($configName, $input), config($configName . 'cc') ?? array());
@@ -38,7 +32,7 @@ class MailService implements MailServiceInterface
                 if (array_key_exists($copyConfig['field_send_copy'], $input) && array_key_exists($copyConfig['field_email'], $input)) {
                     $cc[] = $input[$copyConfig['field_email']];
                 }
-            } else if (is_bool($copyConfig['field_send_copy']) && (bool)$copyConfig['field_send_copy']) {
+            } else if (is_bool($copyConfig['field_send_copy']) && $copyConfig['field_send_copy']) {
                 $cc[] = $input[$copyConfig['field_email']];
             }
         }
