@@ -13,11 +13,7 @@ It offers the following features:
 
 - Multiple contact forms
 - Validation rules
-- Anti-bot image captcha system (optional)
 - Logging: database or file (optional)
-
-## Missing features
-- Captcha
 
 ## Installation
 
@@ -37,7 +33,7 @@ php artisan vendor:publish --provider="Knusperleicht\CrumbForm\CrumbFormServiceP
 
 ## Example:
 
-HTML:
+#### With plain HTML:
 
 - Add your crumbform url into action attribute and the method to post
 - Define your fields
@@ -51,7 +47,53 @@ HTML:
 </form>
 ```
 
-CrumbForm config:
+#### With javascript:
+
+- Give your form an id (e.g. js-form)
+
+``` html
+<form id='js-form'>
+    <input type="text" name="name">
+    <input type="email" name="email">
+    <button type="submit">Send</button>
+</form>
+```
+
+- Get form by element id
+- Put everything in form data and send it to backend
+- Handle error and success
+
+``` js
+<script type="text/javascript">
+    async function sendEmail(url = '', data = {}) {
+        const response = await fetch(url, {
+            method: 'POST',
+            redirect: 'follow',
+            body: data
+        });
+        return response.json()
+    }
+
+    window.onload = function () {
+        const form = document.getElementById("js-form");
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const formData = new FormData(form);
+            sendEmail('http://mail-contact.test/forms/jsform', formData)
+                .then(data => {
+                    // Hanlde success here
+                    console.log(data);
+                })
+                .catch(error => {
+                    // Handle error here
+                    console.log(error)
+                });
+        });
+    };
+</script>
+```
+
+CrumbForm configuration:
 
 - Set the view which you want to use
 - Define the rules for defined fields in html
@@ -80,6 +122,7 @@ CrumbForm config:
 | copy      | array         |  field_send_copy: Can be name of the checkbox in the form or boolean (true/false |
 |           |               |  field_email: Email field in the form |
 | logging   | string        |  Can be db or file  |
+| redirect  | url           |  Url redirection  |
 | rules     | array *        | Validation rules for your input form ([Validation Rules](https://laravel.com/docs/8.x/validation#available-validation-rules)) |
 
 * Required properties in the array
@@ -98,6 +141,7 @@ return [
         'cc' => [''],
         'copy' => ['field_send_copy' => 'form_copy', 'field_email' => 'form_email'],
         'logging' => 'db',
+        'redirect' => 'https://success.test',
         'rules' => [
             'name' => ['required', 'string', 'max:10'],
             'email' => 'required|email',
