@@ -1,5 +1,5 @@
 <p>
-Dear reader,
-{{$content}}
--- Sent from mail-contact-form
+    Dear {{name}}},
+    Your email is: {{email}}
+    -- Sent from crumbform
 </p>
