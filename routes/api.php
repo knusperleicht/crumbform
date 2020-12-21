@@ -16,18 +16,7 @@ use Knusperleicht\CrumbForm\Mail\Boundary\MailController;
 */
 
 Route::group(['namespace' => 'Knusperleicht\CrumbForm'], function () {
-
     Route::post('forms/{id}', [MailController::class, 'validate']);
-
-    Route::post('sendmail', 'MailController@sendMail');
-    Route::get('reload-captcha', 'MailController@reloadCaptcha');
-    Route::get('test', 'MailController@index');
-    Route::get('template', function () {
-        return view('template');
-    });
-    /*Route::get('template', function () {
-        return view('template');
-    });*/
 });
-//(new Captcha)->img()
+
 

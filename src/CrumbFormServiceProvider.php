@@ -8,7 +8,6 @@ use Knusperleicht\CrumbForm\Mail\Control\MailRepository;
 use Knusperleicht\CrumbForm\Mail\Control\MailRepositoryInterface;
 use Knusperleicht\CrumbForm\Mail\Control\MailService;
 use Knusperleicht\CrumbForm\Mail\Control\MailServiceInterface;
-use Mews\Captcha\CaptchaServiceProvider;
 
 const NAME_SPACE = 'Knusperleicht';
 const API_PATH = __DIR__ . './../routes/api.php';
@@ -22,7 +21,6 @@ class CrumbFormServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->register(CrumbFormEventServiceProvider::class);
-        $this->app->register(CaptchaServiceProvider::class);
 
         $this->app->bind(MailRepositoryInterface::class, MailRepository::class);
         $this->app->bind(MailServiceInterface::class, MailService::class);

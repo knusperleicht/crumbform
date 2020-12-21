@@ -20,9 +20,9 @@
     <p class="fs-3">Simple html form submission</p>
     <form action="http://package.mail-contact.test/forms/defaultform" method="post">
         <label for="email">Your Email</label>
-        <input name="Email" id="email" value="test@test.com" type="email">
+        <input name="email" id="email" value="test@test.com" type="email">
         <label for="name">Your Name</label>
-        <input name="Name" id="name" value="Knusperleicht" type="text">
+        <input name="name" id="name" value="Knusperleicht" type="text">
         <button type="submit">Submit</button>
     </form>
 

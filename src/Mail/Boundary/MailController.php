@@ -48,6 +48,8 @@ class MailController extends Controller
         if (!empty($redirectTo)) {
             return redirect($redirectTo);
         }
-        return new ApiResponse('Success');
+        $response = new ApiResponse('Success');
+        return response($response->toJson())
+            ->header('Content-Type', 'application/json');
     }
 }
