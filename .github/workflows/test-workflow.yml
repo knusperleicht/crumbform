@@ -37,7 +37,7 @@ jobs:
               with:
                   php-version: ${{ matrix.php }}
                   extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo
-                  coverage: none
+                  coverage: pcov
                   tools: composer:v2
 
             - name: Install PHP 7 dependencies
@@ -48,3 +48,8 @@ jobs:
 
             - name: Execute tests
               run: vendor/bin/phpunit
+            
+            - name: Send Coverage
+              continue-on-error: true
+              timeout-minutes: 1
+              run: curl -s https://codecov.io/bash | bash -s -- -t ${{secrets.CODECOV_TOKEN}} -f coverage/clover.xml -n github-actions-codecov-${{ matrix.operating-system }}
