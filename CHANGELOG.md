@@ -8,3 +8,4 @@ All notable changes to `crumbform` will be documented in this file
 - Form validation
 - Multiple contact forms
 - Example with and without javascript
+- Junit with coverage
