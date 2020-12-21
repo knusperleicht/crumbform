@@ -19,11 +19,6 @@
             <directory>./tests/Mail/Boundary</directory>
         </testsuite>
     </testsuites>
-    <filter>
-        <whitelist>
-            <directory suffix=".php">src/</directory>
-        </whitelist>
-    </filter>
     <logging>
         <log type="tap" target="build/report.tap"/>
         <log type="junit" target="build/report.junit.xml"/>
