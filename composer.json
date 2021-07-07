@@ -29,7 +29,7 @@
     ],
     "require": {
         "php": "^7.3",
-        "illuminate/support": "8.12.*"
+        "illuminate/support": "v8.49.2"
     },
     "require-dev": {
         "orchestra/testbench": "6.7.0",
@@ -55,7 +55,7 @@
             ]
         },
         "branch-alias": {
-            "dev-devel": "1.0.0-beta.1"
+            "dev-devel": "1.0.0-beta.2"
         }
     }
 }

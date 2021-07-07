@@ -9,7 +9,7 @@ return [
         'bcc' => [],
         'redirect' => '',
         'copy' => [],
-        'logging' => 'db',
+        'logging' => 'file',
         'rules' => [
             'name' => ['required', 'string', 'max:10'],
             'email' => 'required|email'
